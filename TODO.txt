@@ -1,0 +1,17 @@
+/*--------------------------------------------Todos------------------------------------------------\\
+|	>horda
+|	-nevek:
+|		>"játékmód"
+|		>"fehér"
+|	>a klasszikus felállítás algoritmizálása
+|	-spagetti:
+|		>Torony::mozgat() kód duplikáció
+|		>RohamOsztagos::mozgat() kód duplikáció
+|		>a goto-t lehet jól használni; nekem, most kurvára nem sikerült
+|	-lépések
+|		>en passant
+|	>curses
+|	>help
+|	>networking
+|	>menu
+\\-------------------------------------------------------------------------------------------------*/
