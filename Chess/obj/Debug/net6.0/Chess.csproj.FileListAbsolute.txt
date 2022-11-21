@@ -1,0 +1,45 @@
+/home/jacob/Desktop/minecraft mod/C#/chess/Chess/bin/Debug/net6.0/Chess
+/home/jacob/Desktop/minecraft mod/C#/chess/Chess/bin/Debug/net6.0/Chess.deps.json
+/home/jacob/Desktop/minecraft mod/C#/chess/Chess/bin/Debug/net6.0/Chess.runtimeconfig.json
+/home/jacob/Desktop/minecraft mod/C#/chess/Chess/bin/Debug/net6.0/Chess.dll
+/home/jacob/Desktop/minecraft mod/C#/chess/Chess/bin/Debug/net6.0/ref/Chess.dll
+/home/jacob/Desktop/minecraft mod/C#/chess/Chess/bin/Debug/net6.0/Chess.pdb
+/home/jacob/Desktop/minecraft mod/C#/chess/Chess/obj/Debug/net6.0/Chess.csproj.AssemblyReference.cache
+/home/jacob/Desktop/minecraft mod/C#/chess/Chess/obj/Debug/net6.0/Chess.GeneratedMSBuildEditorConfig.editorconfig
+/home/jacob/Desktop/minecraft mod/C#/chess/Chess/obj/Debug/net6.0/Chess.AssemblyInfoInputs.cache
+/home/jacob/Desktop/minecraft mod/C#/chess/Chess/obj/Debug/net6.0/Chess.AssemblyInfo.cs
+/home/jacob/Desktop/minecraft mod/C#/chess/Chess/obj/Debug/net6.0/Chess.csproj.CoreCompileInputs.cache
+/home/jacob/Desktop/minecraft mod/C#/chess/Chess/obj/Debug/net6.0/Chess.dll
+/home/jacob/Desktop/minecraft mod/C#/chess/Chess/obj/Debug/net6.0/ref/Chess.dll
+/home/jacob/Desktop/minecraft mod/C#/chess/Chess/obj/Debug/net6.0/Chess.pdb
+/home/jacob/Desktop/minecraft mod/C#/chess/Chess/obj/Debug/net6.0/Chess.genruntimeconfig.cache
+/media/eriks/ARCH_202109/chess/Chess/bin/Debug/net6.0/Chess
+/media/eriks/ARCH_202109/chess/Chess/bin/Debug/net6.0/Chess.deps.json
+/media/eriks/ARCH_202109/chess/Chess/bin/Debug/net6.0/Chess.runtimeconfig.json
+/media/eriks/ARCH_202109/chess/Chess/bin/Debug/net6.0/Chess.dll
+/media/eriks/ARCH_202109/chess/Chess/bin/Debug/net6.0/Chess.pdb
+/media/eriks/ARCH_202109/chess/Chess/obj/Debug/net6.0/Chess.csproj.AssemblyReference.cache
+/media/eriks/ARCH_202109/chess/Chess/obj/Debug/net6.0/Chess.GeneratedMSBuildEditorConfig.editorconfig
+/media/eriks/ARCH_202109/chess/Chess/obj/Debug/net6.0/Chess.AssemblyInfoInputs.cache
+/media/eriks/ARCH_202109/chess/Chess/obj/Debug/net6.0/Chess.AssemblyInfo.cs
+/media/eriks/ARCH_202109/chess/Chess/obj/Debug/net6.0/Chess.csproj.CoreCompileInputs.cache
+/media/eriks/ARCH_202109/chess/Chess/obj/Debug/net6.0/Chess.dll
+/media/eriks/ARCH_202109/chess/Chess/obj/Debug/net6.0/refint/Chess.dll
+/media/eriks/ARCH_202109/chess/Chess/obj/Debug/net6.0/Chess.pdb
+/media/eriks/ARCH_202109/chess/Chess/obj/Debug/net6.0/Chess.genruntimeconfig.cache
+/media/eriks/ARCH_202109/chess/Chess/obj/Debug/net6.0/ref/Chess.dll
+/home/eriks/Documents/chess/Chess/bin/Debug/net6.0/Chess
+/home/eriks/Documents/chess/Chess/bin/Debug/net6.0/Chess.deps.json
+/home/eriks/Documents/chess/Chess/bin/Debug/net6.0/Chess.runtimeconfig.json
+/home/eriks/Documents/chess/Chess/bin/Debug/net6.0/Chess.dll
+/home/eriks/Documents/chess/Chess/bin/Debug/net6.0/Chess.pdb
+/home/eriks/Documents/chess/Chess/obj/Debug/net6.0/Chess.csproj.AssemblyReference.cache
+/home/eriks/Documents/chess/Chess/obj/Debug/net6.0/Chess.GeneratedMSBuildEditorConfig.editorconfig
+/home/eriks/Documents/chess/Chess/obj/Debug/net6.0/Chess.AssemblyInfoInputs.cache
+/home/eriks/Documents/chess/Chess/obj/Debug/net6.0/Chess.AssemblyInfo.cs
+/home/eriks/Documents/chess/Chess/obj/Debug/net6.0/Chess.csproj.CoreCompileInputs.cache
+/home/eriks/Documents/chess/Chess/obj/Debug/net6.0/Chess.dll
+/home/eriks/Documents/chess/Chess/obj/Debug/net6.0/refint/Chess.dll
+/home/eriks/Documents/chess/Chess/obj/Debug/net6.0/Chess.pdb
+/home/eriks/Documents/chess/Chess/obj/Debug/net6.0/Chess.genruntimeconfig.cache
+/home/eriks/Documents/chess/Chess/obj/Debug/net6.0/ref/Chess.dll
