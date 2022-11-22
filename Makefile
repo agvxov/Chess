@@ -1,15 +1,29 @@
-.PHONY: main clean
+.PHONY: main clean run
 
+CC:=mcs
 SRCD:=src/
-SRC:=Program.cs Figura.cs Asztal.cs enum.cs
+SRC:=Figura.cs Asztal.cs PlaccInfo.cs enum.cs
 SRC:=$(addprefix ${SRCD},${SRC})
-OUTPUT:=chess.mono
+COMP:=${CC} ${SRC}
+OUTPUT:=chess.exe Chess_server.exe Chess_client.exe
 
-main:
-	mcs ${SRC} -o ${OUTPUT}
+main: server client singleplayer
+	@echo done
+
+server:
+	${COMP} ${SRCD}/Server.cs -out:$(word 2,${OUTPUT})
+
+client:
+	${COMP} ${SRCD}/Client.cs -out:$(word 3,${OUTPUT})
+
+singleplayer:
+	${COMP} ${SRCD}/SinglePlayer.cs -out:$(word 1,${OUTPUT})
 
 run:
-	mono ${OUTPUT}
+	mono $(word 2,3,${OUTPUT})
+
+run_single:
+	mono $(word 1,${OUTPUT})
 
 clean:
 	rm ${OUTPUT}
