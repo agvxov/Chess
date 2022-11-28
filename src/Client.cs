@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Threading;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
@@ -30,8 +31,12 @@ class Client : TcpClient {
 		writer = new StreamWriter(GetStream());
 		
 		string s;
+		Thread asyncer = null;
 		while(true){
 			s = reader.ReadLine();
+			if(asyncer != null){
+				asyncer.Abort();
+			}
 			if(s[0] == "\x11"[0]){
 				s = s.Substring(1);
 				//Console.WriteLine("Esc: {0}", s);
@@ -43,8 +48,22 @@ class Client : TcpClient {
 						break;
 					case "spinner":
 						Console.Write("Waiting for oponent");
-						Console.Write(". . .");
-						Console.WriteLine("");
+						asyncer = new Thread(() => {
+							const string dot = ". ";
+							const int rep = 3;
+							while(true){
+								for(int i = 0; i < rep; i++){
+									Console.Write(dot);
+									Thread.Sleep(500);
+								}
+								Console.CursorLeft -= dot.Length*rep;
+								for(int i = 0; i < (dot.Length*rep); i++){
+									Console.Write(" ");
+								}
+								Console.CursorLeft -= dot.Length*rep;
+							}
+						});
+						asyncer.Start();
 						break;
 				}
 			}else{
