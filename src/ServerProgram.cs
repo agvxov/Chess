@@ -1,15 +1,15 @@
 using System;
 using System.Collections.Generic;
 
-class Program{
-	static Random r = new Random();
+static class ServerProgram{
+
+	static Server server = new Server();
 
 	static void Main(string[] args){
-		Asztal tabla = new Asztal(Jatekmod.klasszikus);
+		Byte[] buffer = new Byte[256];
+		String data = null;
 
-		while(true){
-			tabla.print();
-			tabla.mozgat();
-		}
+		server.Start();
+		server.MakeMatch();
 	}
 }

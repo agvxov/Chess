@@ -12,7 +12,8 @@ using System;
 
 			while(true){
 				tabla.print();
-				tabla.mozgat();
+				Console.Write(": ");
+				tabla.mozgat(Console.ReadLine());
 			}
 		}
 	}

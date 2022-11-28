@@ -17,7 +17,7 @@ client:
 	${COMP} ${SRCD}/ClientProgram.cs -out:$(word 3,${OUTPUT})
 
 singleplayer:
-	${COMP} ${SRCD}/Program.cs -out:$(word 1,${OUTPUT})
+	${COMP} ${SRCD}/SinglePlayer.cs -out:$(word 1,${OUTPUT})
 
 run:
 	mono $(word 2,3,${OUTPUT})

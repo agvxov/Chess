@@ -26,8 +26,8 @@ public class AtloInfo{
 	}
 	public void Calc(uint x, uint y){
 		this.xy = (int)x - (int)y;
-		Console.WriteLine("{0} - {1} -> {2}", x, y, this.xy);
+		//Console.WriteLine("{0} - {1} -> {2}", x, y, this.xy);
 		this.yx = (int)y + (int)x;
-		Console.WriteLine("{0} + {1} -> {2}", y, x, this.yx);
+		//Console.WriteLine("{0} + {1} -> {2}", y, x, this.yx);
 	}
 }

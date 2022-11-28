@@ -1,15 +1,17 @@
 using System;
+using System.Threading;
 using System.Collections.Generic;
 
-class Program{
-	static Random r = new Random();
+static class Program{
+
+	static Client client = new Client();
 
 	static void Main(string[] args){
-		Asztal tabla = new Asztal(Jatekmod.klasszikus);
-
-		while(true){
-			tabla.print();
-			tabla.mozgat();
-		}
+		do{
+			if(client.doConnect()){
+				client.Main();
+			}
+			Thread.Sleep(1000);
+		}while(true);
 	}
 }

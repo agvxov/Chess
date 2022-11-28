@@ -6,15 +6,15 @@ public class Asztal{
 	//    Belső változók
 	//------------------------
 	public const uint TERMET = 8;
-	private const string VKOCKA_ELEM = "+---";
-	private const string HKOCKA_ELEM = "| ";
+	private const string VKOCKA_ELEM = "+───";
+	private const string HKOCKA_ELEM = "│ ";
 	private const string VKOCKA_DUGASZ = "+";
-	private const string HKOCKA_DUGASZ = "|";
+	private const string HKOCKA_DUGASZ = "│";
 
 	private Jatekmod jatekmod;
 	private Figura[,] rublika = new Figura[TERMET, TERMET];
 	private List<Figura> halottak = new List<Figura>();
-	private Szin mozgatgat = Szin.FEHER;
+	private Szin _mozgathat = Szin.FEHER;
 
 		// ### Set-Get ###
 			public Jatekmod Jatekmod{
@@ -27,9 +27,8 @@ public class Asztal{
 					return rublika[_x-1, _y-1];
 				}
 				set {
-				if(_x > TERMET || _y > TERMET || _x == 0 || _y == 0) throw new ArgumentOutOfRangeException("");
-				rublika[_x-1, _y-1] = value;
-				
+					if(_x > TERMET || _y > TERMET || _x == 0 || _y == 0) throw new ArgumentOutOfRangeException("");
+					rublika[_x-1, _y-1] = value;
 				}
 			}
 			public void addHalottak(Figura figura){
@@ -38,6 +37,14 @@ public class Asztal{
 			public void clearHalottak(){
 				this.halottak.Clear();
 			}
+			public void turn_turns(){
+				if(this._mozgathat == Szin.FEHER){
+					this._mozgathat = Szin.FEKETE;
+				}else{
+					this._mozgathat = Szin.FEHER;
+				}
+			}
+			public Szin mozgathat{ get => _mozgathat; }
 
 	//------------------------
 	//    Belső eljárások
@@ -79,7 +86,7 @@ public class Asztal{
 				// létező figura?
 				if(this[_x1, _y1] == null){ Figura.mozgat_errno = MozgatErrno.NULL_FIGURA; return false; }
 				// jó szin?
-				if(this[_x1, _y1].Szin != this.mozgatgat){ Figura.mozgat_errno = MozgatErrno.ROSSZ_SZIN; return false; }
+				if(this[_x1, _y1].Szin != this.mozgathat){ Figura.mozgat_errno = MozgatErrno.ROSSZ_SZIN; return false; }
 				// -be határon belül?
 				if(_x2 > TERMET || _y2 > TERMET || _x2 == 0 || _y2 == 0){
 					Figura.mozgat_errno = MozgatErrno.NEM_RUBLIKA; return false;
@@ -89,84 +96,94 @@ public class Asztal{
 
 				return this[_x1, _y1].mozgat(_x2, _y2);
 			}
-			public void mozgat(){
-
-				INPUT:
-					Console.Write(": ");
-					string l = Console.ReadLine();
-					if(l == "pass"){ goto TURN_TURNS; }
-					string[] k = l.Split("->");
-					foreach(var i in k){
-						if(i.Length < 2){ goto INPUT; }
+			private static bool _mozgat_parse(string s,
+									out uint x1, out uint y1,
+									out uint x2, out uint y2){
+				string[] k = s.Split("->");
+				foreach(var i in k){
+					if(i.Length < 2){
+						x1 = 0;
+						x2 = 0;
+						y1 = 0;
+						y2 = 0;
+						return false;
 					}
-				uint x1, y1, x2, y2;
+				}
 				x1 = (uint)(k[0][0] - 96);
 				x2 = (uint)(k[1][0] - 96);
 				y1 = (uint)(k[0][1] - 48);
 				y2 = (uint)(k[1][1] - 48);
-				//Console.WriteLine("{0}, {1};  {2}, {3}", x1, y1, x2, y2);
-				
-				if(!this._mozgat(x1, y1, x2, y2)){
-					return;
-				}
+				Console.WriteLine("{0}, {1};  {2}, {3}", x1, y1, x2, y2);
+				return true;
+			}
+			public bool mozgat(string l){
+				uint x1, y1, x2, y2;
 
-				TURN_TURNS:
-					if(this.mozgatgat == Szin.FEHER){
-						this.mozgatgat = Szin.FEKETE;
-					}else{
-						this.mozgatgat = Szin.FEHER;
-					}
+				if(_mozgat_parse(l, out x1, out y1, out x2, out y2) &&
+						this._mozgat(x1, y1, x2, y2)){
+					this.turn_turns();
+					return true;
+				}
+				return false;
 			}
 		// ### Állapot ellenőrzők ###
-			public void print(){
-				Console.WriteLine("\n\n");
+			public override string ToString(){
+				string r = "";
 				// --- Tábla és bábúk ---
 				for(uint i = Asztal.TERMET; i >= 1; i--){
 
-					Console.Write("   ");
+					r += "   ";
 					for(uint h = 1; h <= Asztal.TERMET; h++){
-						Console.Write(Asztal.VKOCKA_ELEM);
+						r += Asztal.VKOCKA_ELEM;
 					}
-					Console.WriteLine(Asztal.VKOCKA_DUGASZ);
+					r += Asztal.VKOCKA_DUGASZ + "\n";
 
-					Console.Write(" " + i + " ");
+					r += " " + i + " ";
 					for(uint h = 1; h <= Asztal.TERMET; h++){
-						Console.Write(Asztal.HKOCKA_ELEM);
+						r += Asztal.HKOCKA_ELEM;
 						if(this[h, i] != null){
-							Console.Write(this[h, i].Jel);
+							r += this[h, i].Jel;
 						}else{
-							Console.Write(' ');
+							r += ' ';
 						}
-						Console.Write(' ');
+						r += ' ';
 					}
-					Console.WriteLine(Asztal.HKOCKA_DUGASZ);
+					r += Asztal.HKOCKA_DUGASZ + "\n";
 
 				}
-				Console.Write("   ");
+				r += "   ";
 				for(uint h = 1; h <= Asztal.TERMET; h++){
-					Console.Write(Asztal.VKOCKA_ELEM);
+					r += Asztal.VKOCKA_ELEM;
 				}
-				Console.WriteLine(Asztal.VKOCKA_DUGASZ);
-				Console.Write("   ");
+				r += Asztal.VKOCKA_DUGASZ + "\n";
+				r += "   ";
 				for(uint i = 0; i < Asztal.TERMET; i++){
-					Console.Write("  " + (char)('a'+i) + " " );
+					r += "  " + (char)('a'+i) + " " ;
 				}
-				Console.WriteLine();
+				r += "\n";
 
 				// --- Leütött bábúk ---
-				Console.Write("\x1b[1mLeütött bábúk: \x1b[0m");
+				r += "\x1b[1mLeütött bábúk: \x1b[0m";
 				foreach(var i in this.halottak){
-					Console.Write(" " + i.Jel + ',');
+					r += " " + i.Jel + ',';
 				}
-				Console.WriteLine();
+				r += "\n";
 
 				// --- Lépés állapot ---
-				Console.Write("\x1b[1mSoron következő játékos: \x1b[0m");
-				if(this.mozgatgat == Szin.FEHER){
-					Console.Write("□ ");
+				r += "\x1b[1mSoron következő játékos: \x1b[0m";
+				if(this.mozgathat == Szin.FEHER){
+					r += "□ ";
 				}else{
-					Console.Write("■ ");
+					r += "■ ";
 				}
-				Console.WriteLine("\n\x1b[1mUtolsó lépés legalitása: \x1b[0m" + Figura.mozgat_errno);
+				r += "\n\x1b[1mUtolsó lépés legalitása: \x1b[0m" + Figura.mozgat_errno;
+				r += "\n";
+
+				return r;
+			}
+
+			public void print(){
+				Console.WriteLine("\n\n");
+				Console.Write(this.ToString());
 			}
 }
